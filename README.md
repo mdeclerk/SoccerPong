@@ -6,7 +6,7 @@ My very own implementation of the classic Atari Pong Game to explore the develop
 
 ## Play Online
 
-> ## mdeclerk.github.io/SoccerPong
+> ## https://mdeclerk.github.io/SoccerPong
 
 _To setup GitHub pages I followed [this](https://swimburger.net/blog/dotnet/how-to-deploy-aspnet-blazor-webassembly-to-github-pages) awesome tutorial._
 
