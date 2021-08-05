@@ -1,0 +1,143 @@
+@page "/options"
+@inject ConfigService ConfigService
+
+<div style="height: 60px;"></div>
+
+<div class="container py-4">
+    <!-- Options -->
+    <div class="accordion my-2" id="accordionFlushExample">
+        <!-- General Settings -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    General Settings
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <OptionItemNumber Label="Winning Score" @bind-Value="@Config.WinningScore" />
+                    <OptionItemNumber Label="Tick Delay" @bind-Value="@Config.TickDelay" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    Controls
+                </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <OptionItemKey Label="Pause/Resume Key" @bind-Value="Config.PauseResumeKey" />
+                    <OptionItemKey Label="Quit Key" @bind-Value="Config.QuitKey" />
+                    <hr>
+                    <OptionItemBool Label="Left Paddle Is Computer" @bind-Value="Config.LeftPaddleIsComputer" />
+                    <OptionItemKey Label="Left Paddle Move Up" @bind-Value="Config.LeftPaddleMoveUpKey" Disabled="Config.LeftPaddleIsComputer" />
+                    <OptionItemKey Label="Left Paddle Move Down" @bind-Value="Config.LeftPaddleMoveDownKey" Disabled="Config.LeftPaddleIsComputer" />
+                    <hr>
+                    <OptionItemBool Label="Right Paddle Is Computer" @bind-Value="Config.RightPaddleIsComputer" />
+                    <OptionItemKey Label="Right Paddle Move Up" @bind-Value="Config.RightPaddleMoveUpKey" Disabled="Config.RightPaddleIsComputer" />
+                    <OptionItemKey Label="Right Paddle Move Down" @bind-Value="Config.RightPaddleMoveDownKey" Disabled="Config.RightPaddleIsComputer" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Tweaks & Hacks -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    Tweaks &amp; Hacks
+                </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <OptionItemNumber Label="Pitch Width" @bind-Value="Config.PitchWidth" />
+                    <OptionItemNumber Label="Pitch Height" @bind-Value="Config.PitchHeight" />
+                    <hr>
+                    <OptionItemNumber Label="Left Paddle Width" @bind-Value="Config.LeftPaddleWidth" />
+                    <OptionItemNumber Label="Left Paddle Border Offset" @bind-Value="Config.LeftPaddleBorderOffset" />
+                    <OptionItemNumber Label="Left Paddle Height" @bind-Value="Config.LeftPaddleHeight" />
+                    <OptionItemNumber Label="Left Paddle Speed" @bind-Value="Config.LeftPaddleSpeed" />
+                    <hr>
+                    <OptionItemNumber Label="Right Paddle Width" @bind-Value="Config.RightPaddleWidth" />
+                    <OptionItemNumber Label="Right Paddle Border Offset" @bind-Value="Config.RightPaddleBorderOffset" />
+                    <OptionItemNumber Label="Right Paddle Height" @bind-Value="Config.RightPaddleHeight" />
+                    <OptionItemNumber Label="Right Paddle Speed" @bind-Value="Config.RightPaddleSpeed" />
+                    <hr>
+                    <OptionItemNumber Label="Ball Size" @bind-Value="Config.BallSize" />
+                    <OptionItemNumber Label="Ball Initial Speed" @bind-Value="Config.BallInitialSpeed" />
+                    <OptionItemNumber Label="Speed Increase %" @bind-Value="Config.BallSpeedIncreasePercentage"  />
+                    <OptionItemNumber Label="Max Ball Speed" @bind-Value="Config.MaxBallSpeed" />
+                    <OptionItemNumber Label="Ball Rotation Speed" @bind-Value="Config.BallRotationSpeed" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="row g-2 my-2">
+        <div class="col-sm-6">
+            <button class="btn btn-secondary" style="width:100%;" type="button" data-bs-toggle="modal" data-bs-target="#confirmResetModal">Reset Defaults</button>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-primary" style="width:100%;" type="button" data-bs-toggle="modal" data-bs-target="#confirmSaveModal">Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- Confirm Reset Modal -->
+<div class="modal fade" id="confirmResetModal" tabindex="-1" aria-labelledby="confirmResetModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmResetModalLabel">Reset Defaults?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Are you sure you want to reset default settings?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @onclick="OnReset">Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Save Modal -->
+<div class="modal fade" id="confirmSaveModal" tabindex="-1" aria-labelledby="confirmSaveModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmSaveModalLabel">Save?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Are you sure you want to save settings to browsers local storage?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" @onclick="OnSave">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@code
+{
+    Config Config => ConfigService.Config;
+
+    protected override async Task OnInitializedAsync() => await ConfigService.LoadFromLocalStorageAsync();
+
+    async void OnReset() => await ConfigService.ResetDefaultsAsync();
+
+    async void OnSave() => await ConfigService.SaveToLocalStorageAsync();
+}

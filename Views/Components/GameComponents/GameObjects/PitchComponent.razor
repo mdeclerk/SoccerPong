@@ -1,0 +1,12 @@
+@using SoccerPong.Services.GameObjects
+
+<div class="pong-game-pitch" style="width: @((int)Pitch.Width)px; height: @((int)Pitch.Height)px;">
+    @ChildContent
+</div>
+
+@code
+{
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+    [Parameter] public GoPitch Pitch { get; set; }
+}

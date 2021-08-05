@@ -1,0 +1,10 @@
+@using SoccerPong.Services.GameObjects
+
+<div class="pong-game-ball" style="left: @((int)Ball.Position.X)px; top: @((int)Ball.Position.Y)px; width: @((int)Ball.Radius * 2)px; height: @((int)Ball.Radius * 2)px;border-radius: @((int)Ball.Radius * 2)px;">
+    <div class="pong-game-ball-img" style="transform: rotate(@(Ball.Rotation)deg)"></div>
+</div>
+
+@code
+{
+    [Parameter] public GoBall Ball { get; set; }
+}

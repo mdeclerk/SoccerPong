@@ -1,0 +1,10 @@
+@inherits OptionItemBase<bool>
+
+<div class="row align-items-center my-2" style="min-height:@(MinHeight)px;">
+    <div class="col-sm-6">
+        <label class="form-check-label">@Label</label>
+    </div>
+    <div class="col-auto">
+        <input type="checkbox" checked="@Value" @onchange="OnChange" class="form-check-input" />
+    </div>
+</div>

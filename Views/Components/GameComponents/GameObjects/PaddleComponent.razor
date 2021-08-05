@@ -1,0 +1,10 @@
+@using SoccerPong.Services.GameObjects
+
+<div class="pong-game-paddle"
+    style="left: @((int)Paddle.Position.X)px; top: @((int)Paddle.Position.Y)px; width: @((int)Paddle.Size.X)px; height: @((int)Paddle.Size.Y)px;">
+</div>
+
+@code
+{
+    [Parameter] public GoPaddle Paddle { get; set; }
+}

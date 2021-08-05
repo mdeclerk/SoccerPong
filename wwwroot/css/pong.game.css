@@ -1,0 +1,115 @@
+.pong-game-pitch, .pong-game-paddle, .pong-game-ball {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.pong-game-pitch {
+    position: relative;
+    background-image: url("../images/pitch.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 4px;
+    margin: auto;
+}
+
+.pong-game-modal {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 75%);
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.pong-game-modal > a {
+    margin: 24px;
+}
+
+.pong-game-modal-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pong-game-paddle {
+    position: absolute;
+    background-color: white;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    transition: top 0.1s;
+    transform: translate(-50%, -50%);
+}
+
+.pong-game-ball {
+    position: absolute;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%);
+}
+
+.pong-game-ball-img {
+    background-image: url("../images/ball.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+}
+
+.pong-game-scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 0 auto;
+}
+
+.pong-game-scoreboard-l-sco {
+    flex: 0 0 80px;
+    text-align: right;
+}
+
+.pong-game-scoreboard-l-txt {
+    flex: 1 1 100px;
+    text-align: left;
+}
+
+.pong-game-scoreboard-c {
+    flex: 0 0 20px;
+    text-align: center;
+}
+
+.pong-game-scoreboard-r-sco {
+    flex: 0 0 80px;
+    text-align: left;
+}
+
+.pong-game-scoreboard-r-txt {
+    flex: 1 1 100px;
+    text-align: right;
+}
+
+.pong-game-background {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+}
+
+.pong-game-background-overlay {
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,23 @@
+@using System.Globalization
+@typeparam T
+
+@code
+{
+    [Parameter] public string Label { get; set; }
+
+    [Parameter] public T Value { get; set; }
+
+    [Parameter] public EventCallback<T> ValueChanged { get; set; }
+
+    [Parameter] public bool Disabled { get; set; }
+
+    [Parameter] public int MinHeight { get; set; } = 40;
+
+    protected string ValueToString => Convert.ToString(Value, new CultureInfo("en-US"));
+
+    protected void OnChange(ChangeEventArgs e)
+    {
+        Value = (T)Convert.ChangeType(e.Value, typeof(T), new CultureInfo("en-US"));
+        ValueChanged.InvokeAsync(Value);
+    }
+}

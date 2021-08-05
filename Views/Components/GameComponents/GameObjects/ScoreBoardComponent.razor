@@ -1,0 +1,15 @@
+@using SoccerPong.Services.GameObjects
+
+<div class="pong-game-scoreboard" style="width:@(Pitch.Width)px;">
+    <div class="pong-game-scoreboard-l-txt fw-light fs-4 text-muted">@GameStats.LeftPlayerName</div>
+    <div class="pong-game-scoreboard-l-sco fw-bold fs-1">@GameStats.LeftPlayerScore</div>
+    <div class="pong-game-scoreboard-c fw-bold fs-1">:</div>
+    <div class="pong-game-scoreboard-r-sco fw-bold fs-1">@GameStats.RightPlayerScore</div>
+    <div class="pong-game-scoreboard-r-txt fw-light fs-4 text-muted">@GameStats.RightPlayerName</div>
+</div>
+
+@code
+{
+    [Parameter] public GoPitch Pitch { get; set; }
+    [Parameter] public GameStats GameStats { get; set; }
+}

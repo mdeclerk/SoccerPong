@@ -1,0 +1,11 @@
+@typeparam T
+@inherits OptionItemBase<T>
+
+<div class="row align-items-center my-2" style="min-height:@(MinHeight)px;">
+    <div class="col-sm-6">
+        <label class="form-label">@Label</label>
+    </div>
+    <div class="col-auto">
+        <input type="number" value="@ValueToString" @onchange="OnChange" class="form-control" disabled="@Disabled" />
+    </div>
+</div>

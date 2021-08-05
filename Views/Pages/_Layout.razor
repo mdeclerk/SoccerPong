@@ -1,0 +1,23 @@
+@inherits LayoutComponentBase
+
+<div class="bg-light bg-gradient" style="height:100vh">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="Home">
+          <img class="me-2" src="images/ball.png" alt="" width="24" height="24">
+          <em>Soccer</em><strong>PONG</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <NavItem DisplayName="Home" Link="Home" />
+          <NavItem DisplayName="Play!" Link="Play" />
+          <NavItem DisplayName="Options" Link="Options" />
+        </ul>
+      </div>
+    </div>
+  </nav>
+  @Body
+</div>

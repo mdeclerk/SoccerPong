@@ -1,0 +1,27 @@
+@inherits OptionItemBase<string>
+
+<div class="row align-items-center my-2" style="min-height:@(MinHeight)px;">
+    <div class="col-sm-6">
+        <label class="form-label">@Label</label>
+    </div>
+    <div class="col-auto">
+        <select value="@Value" @onchange="OnChange" class="form-select" disabled="@Disabled">
+            <option>Enter</option>
+            <option>Space</option>
+            <option>Backspace</option>
+            <option>Escape</option>
+            <option>ArrowUp</option>
+            <option>ArrowDown</option>
+            <option>ArrowLeft</option>
+            <option>ArrowRight</option>
+            @for (var i=0; i<10; ++i)
+            {
+                <option>Digit@(i)</option>
+            }
+            @for (var i='A'; i<='Z'; ++i)
+            {
+                <option>Key@(i)</option>
+            }
+        </select>
+    </div>
+</div>

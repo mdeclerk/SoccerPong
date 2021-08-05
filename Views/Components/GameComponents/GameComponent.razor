@@ -1,0 +1,61 @@
+@using SoccerPong.Views.Components.GameComponents.ModalView
+@using SoccerPong.Views.Components.GameComponents.GameObjects
+@implements IDisposable
+@inject GameService GameService
+
+<div @ref="_gameContainer" @onkeydown="GameService.ProcessKeyboardEvent" @onkeydown:preventDefault="true" tabindex="0" style="outline: none !important;">
+    <ScoreBoardComponent GameStats="GameService.GameStats" Pitch="GameService.Pitch" />
+
+    <PitchComponent Pitch="GameService.Pitch" >
+        @if (GameService.IsRunning)
+        {
+            @if (GameService.IsGameOver)
+            {
+                <ModalComponent Title="@(GameService.GameStats.LeftPlayerScore > GameService.GameStats.RightPlayerScore ?
+                        $"{GameService.GameStats.LeftPlayerName} has won!" : $"{GameService.GameStats.RightPlayerName} has won!")">
+                    <ModalButtonComponent Icon="Start" OnClick="async e => await GameService.StartAsync()" />
+                </ModalComponent>
+            }
+            else if (GameService.IsPaused)
+            {
+                <PaddleComponent Paddle="GameService.LeftPaddle" />
+                <PaddleComponent Paddle="GameService.RightPaddle" />
+                <BallComponent Ball="GameService.Ball" />
+
+                <ModalComponent Title="Game Paused">
+                    <ModalButtonComponent Icon="Start" OnClick="e => GameService.IsPaused = false" />
+                    <ModalButtonComponent Icon="Stop" OnClick="async e => await GameService.StopAsync()" />
+                </ModalComponent>
+            }
+            else
+            {
+                <PaddleComponent Paddle="GameService.LeftPaddle" />
+                <PaddleComponent Paddle="GameService.RightPaddle" />
+                <BallComponent Ball="GameService.Ball" />
+
+                <div @onclick="e => GameService.IsPaused = true" style="position:absolute;width:100%;height:100%;cursor:pointer;" />
+            }
+        }
+        else
+        {
+            <ModalComponent>
+                <ModalButtonComponent Icon="Start" OnClick="async e => await GameService.StartAsync()" />
+            </ModalComponent>
+        }
+    </PitchComponent>
+</div>
+
+@code
+{
+    ElementReference _gameContainer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        GameService.OnGameTick += StateHasChanged;
+        await GameService.InitAsync();
+    }
+
+    void IDisposable.Dispose() => GameService.OnGameTick -= StateHasChanged;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender) => await _gameContainer.FocusAsync();
+}
