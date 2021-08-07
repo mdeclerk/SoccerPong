@@ -38,12 +38,12 @@ namespace SoccerPong.Services
         public string QuitKey { get; set; } = "Escape";
 
         public bool LeftPaddleIsComputer { get; set; } = false;
-        public string LeftPaddleMoveUpKey { get; set; } = "KeyQ";
-        public string LeftPaddleMoveDownKey { get; set; } = "KeyA";
+        public string LeftPaddleMoveUpKey { get; set; } = "ArrowUp";
+        public string LeftPaddleMoveDownKey { get; set; } = "ArrowDown";
 
         public bool RightPaddleIsComputer { get; set; } = true;
-        public string RightPaddleMoveUpKey { get; set; } = "ArrowUp";
-        public string RightPaddleMoveDownKey { get; set; } = "ArrowDown";
+        public string RightPaddleMoveUpKey { get; set; } = "KeyQ";
+        public string RightPaddleMoveDownKey { get; set; } = "KeyA";
 
         #endregion
     }
