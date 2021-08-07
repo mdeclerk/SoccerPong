@@ -2,7 +2,7 @@
 @inject NavigationManager NavMan
 
 <li class="nav-item">
-    <a class="nav-link @ActiveCss" href="@Link" >@DisplayName</a>
+    <a class="nav-link @ActiveCss()" href="@Link" >@DisplayName</a>
 </li>
 
 @code
@@ -10,6 +10,8 @@
     [Parameter] public string DisplayName { get; set; }
 
     [Parameter] public string Link { get; set; }
+
+    [Parameter] public bool IsRoot { get; set; } = false;
 
     protected override void OnInitialized() =>
         NavMan.LocationChanged += OnLocationChanged;
@@ -22,5 +24,10 @@
 
     void NavToLink() => NavMan.NavigateTo(Link);
 
-    string ActiveCss => NavMan.Uri.EndsWith(Link) ? "active" : "";
+    string ActiveCss()
+    {
+        if ((IsRoot && NavMan.Uri.EndsWith("/")) || NavMan.Uri.EndsWith(Link))
+            return "active";
+        return "";
+    }
 }
