@@ -1,8 +1,8 @@
 @implements IDisposable
-@inject NavigationManager NavigationManager
+@inject NavigationManager NavMan
 
 <li class="nav-item">
-    <a class="nav-link @(ActiveCss($"{Link}"))" href="@Link" @onclick="@(() => NavToUri($"{Link}"))" @onclick:preventDefault="true">@DisplayName</a>
+    <a class="nav-link @ActiveCss" href="@Link" >@DisplayName</a>
 </li>
 
 @code
@@ -12,17 +12,15 @@
     [Parameter] public string Link { get; set; }
 
     protected override void OnInitialized() =>
-        NavigationManager.LocationChanged += OnLocationChanged;
+        NavMan.LocationChanged += OnLocationChanged;
 
     void IDisposable.Dispose() =>
-        NavigationManager.LocationChanged -= OnLocationChanged;
+        NavMan.LocationChanged -= OnLocationChanged;
 
     void OnLocationChanged(object sender, LocationChangedEventArgs args) =>
         StateHasChanged();
 
-    void NavToUri(string uri) =>
-        NavigationManager.NavigateTo(uri);
+    void NavToLink() => NavMan.NavigateTo(Link);
 
-    string ActiveCss(string uri) =>
-        NavigationManager.Uri.EndsWith(uri) ? "active" : "";
+    string ActiveCss => NavMan.Uri.EndsWith(Link) ? "active" : "";
 }
