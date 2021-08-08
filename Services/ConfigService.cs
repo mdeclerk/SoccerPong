@@ -14,10 +14,10 @@ namespace SoccerPong.Services
         public ConfigService(ILocalStorageService localStorage) =>
             _localStorage = localStorage;
 
-        public async ValueTask ResetDefaultsAsync()
+        public ValueTask ResetDefaultsAsync()
         {
             Config = new();
-            await _localStorage.RemoveItemAsync(LS_KEY);
+            return _localStorage.RemoveItemAsync(LS_KEY);
         }
 
         public async ValueTask<bool> LoadFromLocalStorageAsync()
@@ -30,7 +30,7 @@ namespace SoccerPong.Services
             return false;
         }
 
-        public async ValueTask SaveToLocalStorageAsync() =>
-            await _localStorage.SetItemAsync<Config>(LS_KEY, Config);
+        public ValueTask SaveToLocalStorageAsync() =>
+             _localStorage.SetItemAsync<Config>(LS_KEY, Config);
     }
 }

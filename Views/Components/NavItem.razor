@@ -22,8 +22,6 @@
     void OnLocationChanged(object sender, LocationChangedEventArgs args) =>
         StateHasChanged();
 
-    void NavToLink() => NavMan.NavigateTo(Link);
-
     string ActiveCss()
     {
         if ((IsRoot && NavMan.Uri.EndsWith("/")) || NavMan.Uri.EndsWith(Link))

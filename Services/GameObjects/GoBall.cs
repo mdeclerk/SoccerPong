@@ -54,7 +54,7 @@ namespace SoccerPong.Services.GameObjects
             }
         }
 
-        private void IncreaseSpeed()
+        void IncreaseSpeed()
         {
             var oldScale = Speed.Length();
             var newScale = oldScale * (1 + SpeedIncreasePercentage);
@@ -62,15 +62,14 @@ namespace SoccerPong.Services.GameObjects
             Speed *= newScale / oldScale;
         }
 
-        private bool CollisionWithXBounds() => Position.X - Radius < 0 || Position.X + Radius > _gameService.Pitch.Width;
+        bool CollisionWithXBounds() => Position.X - Radius < 0 || Position.X + Radius > _gameService.Pitch.Width;
 
-        private bool CollisionWithYBounds() => Position.Y - Radius < 0 || Position.Y + Radius > _gameService.Pitch.Height;
+        bool CollisionWithYBounds() => Position.Y - Radius < 0 || Position.Y + Radius > _gameService.Pitch.Height;
 
-        private bool CollisionWithPaddle(GoPaddle paddle)
+        bool CollisionWithPaddle(GoPaddle paddle)
         {
             var closestX = Math.Clamp(Position.X, paddle.Position.X - paddle.Size.X / 2, paddle.Position.X + paddle.Size.X / 2);
             var closestY = Math.Clamp(Position.Y, paddle.Position.Y - paddle.Size.Y / 2, paddle.Position.Y + paddle.Size.Y / 2);
-
             var distanceSq = (new Vector2(closestX, closestY) - Position).LengthSq();
             return distanceSq < Radius * Radius;
         }
