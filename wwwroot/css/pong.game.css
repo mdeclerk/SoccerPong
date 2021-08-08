@@ -28,6 +28,7 @@
 
 .pong-game-modal > a {
   margin: 24px;
+  z-index: 1;
 }
 
 .pong-game-modal-title {
