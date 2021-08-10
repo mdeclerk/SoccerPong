@@ -17,14 +17,15 @@ namespace SoccerPong.Services.GameObjects
             if (_isLeftPaddle)
             {
                 Position = new Vector2(config.LeftPaddleBorderOffset, config.PitchHeight / 2);
+                Size = new Vector2(config.LeftPaddleWidth, config.LeftPaddleHeight);
+                Speed = config.LeftPaddleSpeed;
             }
             else
             {
                 Position = new Vector2(config.PitchWidth - config.RightPaddleBorderOffset, config.PitchHeight / 2);
+                Size = new Vector2(config.RightPaddleWidth, config.RightPaddleHeight);
+                Speed = config.RightPaddleSpeed;
             }
-
-            Size = new Vector2(config.LeftPaddleWidth, config.LeftPaddleHeight);
-            Speed = config.LeftPaddleSpeed;
         }
 
         public void MoveUp()
