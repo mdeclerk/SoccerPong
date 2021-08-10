@@ -11,8 +11,10 @@ namespace SoccerPong
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddSoccerPongServices();
+
             await builder.Build().RunAsync();
         }
     }
