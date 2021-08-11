@@ -1,6 +1,6 @@
 # SoccerPONG
 
-A Pong clone to explore the development process of a Full-stack Web App using ASP.NET Blazor WebAssembly.
+A Pong clone to explore the development process of a real-time interactive Web App using ASP.NET Blazor WebAssembly.
 
 ![SoccerPong](SoccerPong.gif)
 
@@ -38,7 +38,7 @@ _To automatically deploy to GitHub Pages using GitHub Actions I followed [this](
 
 5. Play in Browser: http://localhost:5000
 
-_For further information on containerizing BlazorWASM apps see [here](https://chrissainty.com/containerising-blazor-applications-with-docker-containerising-a-blazor-webassembly-app)._
+_Helpful information about containerizing BlazorWASM apps can be found [here](https://chrissainty.com/containerising-blazor-applications-with-docker-containerising-a-blazor-webassembly-app)._
 
 ## Code Layout
 
@@ -52,4 +52,4 @@ _For further information on containerizing BlazorWASM apps see [here](https://ch
 
 ## Dependencies
 
-- **[Blazored.LocalStorage](https://www.nuget.org/packages/Blazored.LocalStorage/)** Used to load/save game options to browsers local storage.
+- **[Blazored.LocalStorage](https://github.com/Blazored/LocalStorage)** Used to load/save game options to browsers local storage.
