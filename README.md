@@ -22,21 +22,17 @@ _To automatically deploy to GitHub Pages using GitHub Actions I followed [this](
 
 4. Play in Browser: http://localhost:5000
 
-## Play from Docker Container w/ NGINX
+## Play from Docker Container w/ NGINX as web server
 
 1. Install [Docker Desktop](https://docs.docker.com/desktop)
 
 2. Clone Project from GitHub
 
-3. Build Image (in Project Root Folder):
+3. Run as Docker Service (in Project Root Folder):
 
-   `$ docker build -t soccerpong:latest .`
+   `$ docker-compose up -d`
 
-4. Run Image:
-
-   `$ docker run -it --rm -p 5000:80 soccerpong:latest`
-
-5. Play in Browser: http://localhost:5000
+4. Play in Browser: http://localhost:5000
 
 _Helpful information about containerizing BlazorWASM apps can be found [here](https://chrissainty.com/containerising-blazor-applications-with-docker-containerising-a-blazor-webassembly-app)._
 
