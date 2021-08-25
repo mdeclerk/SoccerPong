@@ -7,7 +7,7 @@ COPY . .
 RUN dotnet publish -c Release -o /publish --nologo
 
 # Runtime environment
-FROM nginx:alpine AS runtime-env
-WORKDIR /usr/share/nginx/html
-COPY --from=build-env /publish/wwwroot .
-COPY nginx.conf /etc/nginx/nginx.conf
+#FROM nginx:alpine AS runtime-env
+#WORKDIR /usr/share/nginx/html
+#COPY --from=build-env /publish/wwwroot .
+#COPY nginx.conf /etc/nginx/nginx.conf

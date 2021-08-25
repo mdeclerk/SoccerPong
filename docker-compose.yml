@@ -3,6 +3,7 @@ version: '3'
 services:
   soccerpong:
     build: .
+    image: soccerpong
     container_name: soccerpong
     ports:
       - 5000:80
