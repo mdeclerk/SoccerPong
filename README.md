@@ -12,7 +12,7 @@ _To automatically deploy to GitHub Pages using GitHub Actions I followed [this](
 
 ## Play Locally
 
-1. Install [Microsoft .NET SDK 5.0](https://dotnet.microsoft.com/download)
+1. Install [Microsoft .NET SDK 6.0](https://dotnet.microsoft.com/download)
 
 2. Clone Project from GitHub
 
